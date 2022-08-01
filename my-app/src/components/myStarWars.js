@@ -6,6 +6,7 @@ class StarWars extends React.Component {
 
         //Set the state to blank on setup
         this.state = {
+            wasCharacterLoaded: false,
             name: null,
             height: null,
             homeworld: null,
@@ -17,6 +18,7 @@ class StarWars extends React.Component {
     getNewCharacter() {
         console.log("Get new character from a button")
         this.setState({
+            wasCharacterLoaded: true,
             name: 'Luke',
             height: 172,
             homeworld: 'Tatooine',
@@ -27,12 +29,19 @@ class StarWars extends React.Component {
     render() {
         return (
         <div>
-            <h1>{this.state.name}</h1>
-            <p>{this.state.height} (cm)</p>
-            <p>Homeworld: {this.state.homeworld}</p>
-            <ul>
-                <li>{this.state.films}</li>
-            </ul>
+            {/* JS logic inside {} */}
+            {
+                this.state.wasCharacterLoaded === true &&
+                <div>
+                    <h1>{this.state.name}</h1>
+                    <p>{this.state.height} (cm)</p>
+                    <p>Homeworld: {this.state.homeworld}</p>
+                    <ul>
+                        <li>{this.state.films}</li>
+                    </ul>
+                </div>
+            } 
+            
             <button type="button" onClick={() => this.getNewCharacter()} className="btn">Randomize Character</button>
             </div>
         )    
