@@ -17,13 +17,18 @@ class StarWars extends React.Component {
     //Everytime getNewCharacter() is called, we need to update the state
     getNewCharacter() {
         console.log("Get new character from a button")
-        this.setState({
-            wasCharacterLoaded: true,
-            name: 'Luke',
-            height: 172,
-            homeworld: 'Tatooine',
-            films: ['item 1', 'item 2'],
-        })
+        const baseUrl = "https://swapi.dev/api/people/1/"
+        fetch(baseUrl) //Connect to URL
+            .then(response => response.json()) //Get the response as JSON
+            .then(data => { //Now we can work with the "data"
+                this.setState({
+                    wasCharacterLoaded: true,
+                    name: data.name,
+                    height: data.height,
+                    homeworld: data.homeworld,
+                    films: data.films,
+                })
+            })
     }
 
     render() {
