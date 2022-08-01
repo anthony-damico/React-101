@@ -17,7 +17,8 @@ class StarWars extends React.Component {
     //Everytime getNewCharacter() is called, we need to update the state
     getNewCharacter() {
         console.log("Get new character from a button")
-        const baseUrl = "https://swapi.dev/api/people/1/"
+        const randomNumber = Math.round(Math.random() * 82) //Create random number between 1 and 82. Ideally we would get COUNT from API to do this calc
+        const baseUrl = `https://swapi.dev/api/people/${randomNumber}/`
         fetch(baseUrl) //Connect to URL
             .then(response => response.json()) //Get the response as JSON
             .then(data => { //Now we can work with the "data"
