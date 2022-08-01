@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App /> {/* By exporting App() in App.js, we can now render App as HTML. THis works like magic apprently lol */} 
   </React.StrictMode>
 );
 
