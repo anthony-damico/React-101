@@ -1,4 +1,5 @@
 import React from 'react';
+import FilmItemRow from './myFilmItemRow';
 
 class StarWars extends React.Component {
     constructor(props) {
@@ -33,6 +34,11 @@ class StarWars extends React.Component {
     }
 
     render() {
+        //Map is basically a loop function. Every item in a list needs a key (index) to ensure there are no errors
+        const movies = this.state.films.map((url, index) => {
+            return <FilmItemRow key={index} url={url}/> //key and url are props i think
+        })
+
         return (
         <div>
             {/* JS logic inside {} */}
@@ -43,7 +49,7 @@ class StarWars extends React.Component {
                     <p>{this.state.height} (cm)</p>
                     <p><a href={this.state.homeworld}>Homeworld: {this.state.homeworld}</a></p>
                     <ul>
-                        <li>{this.state.films}</li>
+                        {movies}
                     </ul>
                 </div>
             } 
